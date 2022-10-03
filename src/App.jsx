@@ -10,6 +10,7 @@ import GerenciarEstoque from './pages/GerenciarEstoque';
 import MeusPedidos  from './pages/MeusPedidos';
 import MontarInstrumento  from './pages/MontarInstrumento';
 import AnaliseDePedidos  from './pages/AnaliseDePedidos';
+import AdminPanel from './components/AdminPanel';
 
 function App() {
   return (
