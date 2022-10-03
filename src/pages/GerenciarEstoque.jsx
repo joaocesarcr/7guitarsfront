@@ -191,7 +191,7 @@ function GerenciarEstoque() {
           direction="column"
         >
 
-          <Heading> aaa </Heading>
+          <Heading> bbb </Heading>
           {CadastroEstoque()}
         </Flex>
       </Flex>
