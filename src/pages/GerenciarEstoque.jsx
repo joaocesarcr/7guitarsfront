@@ -97,7 +97,7 @@ function GerenciarEstoque() {
       };
       const response = await fetch('https://sevenguitars.herokuapp.com/registerPart', {
         method: 'POST',
-        // credentials: 'include',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
