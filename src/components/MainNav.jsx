@@ -17,9 +17,19 @@ const navBarPerUser = {
   user: ['Montar Instrumento', 'Biblioteca', 'Carrinho', 'Meus Pedidos'],
   loggedOut: ['Login', 'Register'],
   adm: ['Gerenciar Estoque', 'Analise de Pedidos'],
+  all: [
+    'Login',
+    'Register',
+    'Montar Instrumento',
+    'Biblioteca',
+    'Carrinho',
+    'Meus Pedidos',
+    'Gerenciar Estoque',
+    'Analise de Pedidos',
+  ],
 };
 
-const MainNav = ({ userType = 'loggedOut' }) => {
+const MainNav = ({ userType = 'all' }) => {
   // const { isOpen, onToggle } = useDisclosure();
   return (
     <Box>
@@ -58,7 +68,7 @@ const MainNav = ({ userType = 'loggedOut' }) => {
 function CreateNavText(userType) {
   // TODO MUDAR AQUI
   return (
-    <HStack spacing={'5rem'} pr={'5rem'} color={useColorModeValue('gray.600', 'white')}>
+    <HStack spacing={'4rem'} pr={'5rem'} color={useColorModeValue('gray.600', 'white')}>
       {mapByUserType(userType)}
     </HStack>
   );
