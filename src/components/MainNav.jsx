@@ -7,54 +7,47 @@ import {
   HStack,
   useColorModeValue,
   useDisclosure,
-} from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+} from '@chakra-ui/react';
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 // import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from "./Logo";
-import { Link } from "react-router-dom";
+import { Logo } from './Logo';
+import { Link } from 'react-router-dom';
 
 const navBarPerUser = {
-  user: ["Montar Instrumento", "Biblioteca", "Carrinho", "Meus Pedidos"],
-  loggedOut: ["Login", "Register"],
-  adm: ["Gerenciar Estoque", "Analise de Pedidos"],
+  user: ['Montar Instrumento', 'Biblioteca', 'Carrinho', 'Meus Pedidos'],
+  loggedOut: ['Login', 'Register'],
+  adm: ['Gerenciar Estoque', 'Analise de Pedidos'],
 };
 
 export default function MainNav(userType) {
   const { isOpen, onToggle } = useDisclosure();
-  userType = "adm"
+  userType = 'loggedOut';
 
   return (
     <Box>
       <Flex
-        bg={useColorModeValue("black", "gray.800")}
-        color={useColorModeValue("gray.600", "white")}
-        justify={"flex-end"}
-        minH={"5rem"}
+        bg={useColorModeValue('black', 'gray.800')}
+        color={useColorModeValue('gray.600', 'white')}
+        justify={'flex-end'}
+        minH={'5rem'}
         py={{ base: 2 }}
         px={{ base: 4 }}
-        align={"center"}
+        align={'center'}
       >
         <Flex
-          flex={{ base: 1, md: "auto" }}
+          flex={{ base: 1, md: 'auto' }}
           ml={{ base: -2 }}
-          display={{ base: "flex", md: "none" }}
+          display={{ base: 'flex', md: 'none' }}
         >
           <IconButton
             onClick={onToggle}
-            icon={
-              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
-            }
-            variant={"ghost"}
-            aria-label={"Toggle Navigation"}
+            icon={isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />}
+            variant={'ghost'}
+            aria-label={'Toggle Navigation'}
           />
         </Flex>
-        <Stack
-          justify={"space-between"}
-          direction={"row"}
-          align={"center"}
-          w={"100%"}
-        >
-          <Logo h="10vmin" pointerEvents="none" justify={"flex-start"} />
+        <Stack justify={'space-between'} direction={'row'} align={'center'} w={'100%'}>
+          <Logo h="10vmin" pointerEvents="none" justify={'flex-start'} />
 
           {CreateNavText(userType)}
         </Stack>
@@ -63,14 +56,9 @@ export default function MainNav(userType) {
   );
 }
 
-
 function CreateNavText(userT) {
   return (
-    <HStack
-      spacing={"5rem"}
-      pr={"5rem"}
-      color={useColorModeValue("gray.600", "white")}
-    >
+    <HStack spacing={'5rem'} pr={'5rem'} color={useColorModeValue('gray.600', 'white')}>
       {mapByUserType(userT)}
     </HStack>
   );
@@ -78,13 +66,13 @@ function CreateNavText(userT) {
 
 function mapByUserType(userT) {
   return navBarPerUser[userT].map((x) => (
-    <Link to={ "/" + x.toLowerCase().replace(/\s+/g, '')}>
+    <Link to={'/' + x.toLowerCase().replace(/\s+/g, '')}>
       <Button
         // as={'a'}
-        fontSize={"md"}
-        color={"white"}
+        fontSize={'md'}
+        color={'white'}
         fontWeight={400}
-        variant={"link"}
+        variant={'link'}
       >
         {x}
       </Button>
