@@ -56,7 +56,6 @@ const MainNav = ({ userType = 'loggedOut' }) => {
 };
 
 function CreateNavText(userType) {
-  // TODO MUDAR AQUI
   return (
     <HStack spacing={'5rem'} pr={'5rem'} color={useColorModeValue('gray.600', 'white')}>
       {mapByUserType(userType)}

@@ -15,6 +15,7 @@ import {
   Input,
 } from '@chakra-ui/react';
 import MainNav from '../components/MainNav';
+import Pedido from '../components/Pedido';
 
 function AnaliseDePedidos() {
   return (
@@ -27,11 +28,7 @@ function AnaliseDePedidos() {
         justifyContent="center"
         h="100vh"
       >
-        <Box p={6}>
-          <Box my={12} textAlign="center">
-            <Heading color="black">Analise de Pedidos</Heading>
-          </Box>
-        </Box>
+        <Pedido/>
       </Flex>
     </ChakraProvider>
   );
