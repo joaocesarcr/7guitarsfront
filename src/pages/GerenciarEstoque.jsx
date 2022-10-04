@@ -34,7 +34,7 @@ function GerenciarEstoque() {
   // useEffect(() => {
   //   const fetchData = async () => {
   //     const response = await axios(
-  //       "https://sevenguitars.herokuapp.com/getPartsOfType?section=" + pecaNome
+  //       "http://sevenguitars.herokuapp.com/getPartsOfType?section=" + pecaNome
   //     );
   //     const data = response.data;
   //     setPostArray(data.Variacoes);
@@ -44,7 +44,7 @@ function GerenciarEstoque() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios('https://sevenguitars.herokuapp.com/getAllSections');
+      const response = await axios('http://sevenguitars.herokuapp.com/getAllSections');
       const data = response.data;
       setSecoesArray(data);
     };
@@ -55,7 +55,7 @@ function GerenciarEstoque() {
   //   setPostArray(postArray.filter((post) => post.id !== postId));
   //   const obj = { name: name, section: "corda" };
   //   const response = await fetch(
-  //     "https://sevenguitars.herokuapp.com/deletePart",
+  //     "http://sevenguitars.herokuapp.com/deletePart",
   //     {
   //       method: "DELETE",
   //       credentials: "include",
@@ -95,7 +95,7 @@ function GerenciarEstoque() {
         price: post.price,
         description: post.description,
       };
-      const response = await fetch('https://sevenguitars.herokuapp.com/registerPart', {
+      const response = await fetch('http://sevenguitars.herokuapp.com/registerPart', {
         method: 'POST',
         credentials: 'include',
         headers: {

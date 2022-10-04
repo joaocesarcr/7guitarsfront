@@ -43,7 +43,7 @@ function CadastroEstoque(secoes) {
   //   // let partsSections = [];
   //   const fetchData = async (secao) => {
   //     const response = await axios(
-  //       'https://sevenguitars.herokuapp.com/getPartsOfType?section=' + secao
+  //       'http://sevenguitars.herokuapp.com/getPartsOfType?section=' + secao
   //     );
   //     const data = response.data;
   //     // partsSections.push(data.Variacoes);
@@ -69,7 +69,7 @@ function CadastroEstoque(secoes) {
   useEffect(() => {
     const fetchData = async (secao) => {
       const response = await axios(
-        'https://sevenguitars.herokuapp.com/getPartsOfType?section=' + secao
+        'http://sevenguitars.herokuapp.com/getPartsOfType?section=' + secao
       );
       const data = response.data;
       // setPostArray(data.Variacoes);
@@ -79,7 +79,7 @@ function CadastroEstoque(secoes) {
 
   const getVariations = async (secao) => {
     const response = await axios(
-      'https://sevenguitars.herokuapp.com/getPartsOfType?section=' + secao
+      'http://sevenguitars.herokuapp.com/getPartsOfType?section=' + secao
     );
     const data = response.data;
     return data;
