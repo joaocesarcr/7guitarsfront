@@ -18,7 +18,7 @@ function GerenciarEstoque() {
       //   'http://localhost:3000/getPartsOfType?section=' + pecaNome
       // );
       const response = await axios(
-        'https://sevenguitars.herokuapp.com/getPartsOfType?section=' + pecaNome
+        'http://sevenguitars.herokuapp.com/getPartsOfType?section=' + pecaNome
       );
       const data = response.data;
       setPostArray(data.Variacoes);
@@ -38,7 +38,7 @@ function GerenciarEstoque() {
 
     //   body: JSON.stringify(obj),
     // });
-    const response = await fetch('https://sevenguitars.herokuapp.com/deletePart', {
+    const response = await fetch('http://sevenguitars.herokuapp.com/deletePart', {
       method: 'DELETE',
       credentials: 'include',
       headers: {
@@ -83,7 +83,7 @@ function GerenciarEstoque() {
       //   },
       //   body: JSON.stringify(obj),
       // });
-      const response = await fetch('https://sevenguitars.herokuapp.com/deletePart', {
+      const response = await fetch('http://sevenguitars.herokuapp.com/deletePart', {
         method: 'POST',
         credentials: 'include',
         headers: {

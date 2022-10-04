@@ -131,7 +131,8 @@ function CadastroEstoque(secoes) {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios(
-        'http://sevenguitars.herokuapp.com/getPartsOfType?section=Cordas'
+
+        'http://sevenguitars.herokuapp.com/getPartsOfType?section=' + secao
       );
       const data = response.data;
       setPartCordas(data.Variacoes);
@@ -139,31 +140,10 @@ function CadastroEstoque(secoes) {
     fetchData();
   }, []);
 
-  async function mapPartInfos(partCordas) {
-    partCordas.map(
-      (key, index) => console.log(key)
-      // <TabPanel>
-      //   <Text>{key.text}</Text>
-      //   <FormLabel>Preço</FormLabel>
-      //   <Input
-      //     type="text"
-      //     name="price"
-      //     value={key.price}
-      //     // onChange={(e) => setValue(e.target.value)}
-      //     // onKeyPress={handleKeyPress}
-      //     autoComplete="off"
-      //   />
-      //   <FormLabel>Quantidade</FormLabel>
-      //   <Input
-      //     type="text"
-      //     name="quantity"
-      //     value={key.quantity}
-      //     // onChange={(e) => setValue(e.target.value)}
-      //     // onKeyPress={handleKeyPress}
-      //     autoComplete="off"
-      //   />
-      //   <Text>{key.description}</Text>
-      // </TabPanel>
+
+  const getVariations = async (secao) => {
+    const response = await axios(
+      'http://sevenguitars.herokuapp.com/getPartsOfType?section=' + secao
     );
   }
 

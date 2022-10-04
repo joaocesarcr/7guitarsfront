@@ -31,6 +31,7 @@ const navBarPerUser = {
 
 const MainNav = ({ userType = 'all' }) => {
   // const { isOpen, onToggle } = useDisclosure();
+
   return (
     <Box>
       <Flex
@@ -66,7 +67,7 @@ const MainNav = ({ userType = 'all' }) => {
 };
 
 function CreateNavText(userType) {
-  // TODO MUDAR AQUI
+
   return (
     <HStack spacing={'4rem'} pr={'5rem'} color={useColorModeValue('gray.600', 'white')}>
       {mapByUserType(userType)}

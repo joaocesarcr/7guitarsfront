@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState } from "react";
 import {
   ChakraProvider,
   Flex,
@@ -13,28 +13,65 @@ import {
   FormControl,
   FormLabel,
   Input,
-} from '@chakra-ui/react';
-import MainNav from '../components/MainNav';
+} from "@chakra-ui/react";
+import MainNav from "../components/MainNav";
+import Pedido from "../components/Pedido";
 
 function Biblioteca() {
   return (
     <ChakraProvider theme={theme}>
       <MainNav />
-      <Flex
+      <Box
         width="full"
-        height="full"
-        align="flex-start"
+        align="center"
         justifyContent="center"
-        h="100vh"
+overflowY="scroll"
       >
-        <Box p={6}>
-          <Box my={12} textAlign="center">
-            <Heading color="black">Biblioteca</Heading>
-          </Box>
+        <Box height="100vh"  width="50%" >
+          {mapData(fData)}
         </Box>
-      </Flex>
+      </Box>
     </ChakraProvider>
   );
 }
-
 export default Biblioteca;
+
+function mapData(data) {
+  return data.map( (x) => ( <Pedido data={x}/>));
+}
+const fData = [
+  {
+    titulo: "Flea",
+    tipo: "Baixo",
+    preco: "R$500,00",
+    autor: "José",
+    data: "13/02/2022",
+    descricao: "Baixo bom custo benefício",
+  },
+  {
+    titulo: "Thunder",
+    tipo: "Baixo",
+    preco: "R$3.500,00",
+    autor: "Maria",
+    data: "13/02/2022",
+    descricao: "Melhor baixo possível",
+  },
+  {
+    titulo: "Jimi",
+    tipo: "Guitarra",
+    preco: "R$1.200,00",
+    autor: "João",
+    data: "13/02/2022",
+    descricao: "Guitarra para iniciantes",
+  },
+  {
+    titulo: "Pat",
+    tipo: "Violão",
+    preco: "R$990,00",
+    autor: "Joana",
+    data: "19/02/2022",
+    descricao: "Violão de aço",
+
+  },
+
+]
