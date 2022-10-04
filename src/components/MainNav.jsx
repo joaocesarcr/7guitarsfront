@@ -19,8 +19,11 @@ const navBarPerUser = {
   adm: ['Gerenciar Estoque', 'Analise de Pedidos'],
 };
 
-const MainNav = ({ userType = 'loggedOut' }) => {
-  // const { isOpen, onToggle } = useDisclosure();
+const MainNav = ({ userType='user'}) => {
+  
+
+  const { isOpen, onToggle } = useDisclosure();
+
   return (
     <Box>
       <Flex
@@ -56,7 +59,7 @@ const MainNav = ({ userType = 'loggedOut' }) => {
 };
 
 function CreateNavText(userType) {
-  // TODO MUDAR AQUI
+
   return (
     <HStack spacing={'5rem'} pr={'5rem'} color={useColorModeValue('gray.600', 'white')}>
       {mapByUserType(userType)}
