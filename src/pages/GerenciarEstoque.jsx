@@ -18,6 +18,7 @@ import {
   Input,
 } from '@chakra-ui/react';
 import MainNav from '../components/MainNav';
+axios.defaults.withCredentials = true;
 
 function GerenciarEstoque() {
   let [parteNome, setParteNome] = useState(''); // TODO: change later
@@ -43,7 +44,6 @@ function GerenciarEstoque() {
 
   useEffect(() => {
     const fetchData = async () => {
-      axios.defaults.withCredentials = true;
       const response = await axios('https://sevenguitars.herokuapp.com/getAllSections');
       const data = response.data;
       setSecoesArray(data);
