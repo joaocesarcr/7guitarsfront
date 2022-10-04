@@ -12,7 +12,18 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { Logo } from "./Logo";
 import { Link } from "react-router-dom";
 
-const PecasSelecionadas = (lista) => {
+const PecasSelecionadas = ({
+  data = [
+    {
+      peca: "peca1",
+      tipo: "tipo1",
+    },
+    {
+      peca: "peca2",
+      tipo: "tipo2",
+    },
+  ],
+}) => {
   function mapData(list) {
     return list.map((x) => (
       <ListItem key={x.peca}>
@@ -24,24 +35,31 @@ const PecasSelecionadas = (lista) => {
   function showData(list) {
     return <UnorderedList> {mapData(list)} </UnorderedList>;
   }
-  const data = {
-    descricao: "DescricaoDescricaoDescr",
-    lista: [
+  {
+    data = [
       {
-        peca: "peca1",
-        tipo: "tipo1",
+        peca: "Neck",
+        tipo: "Neck1",
       },
       {
-        peca: "peca2",
-        tipo: "tipo2",
+        peca: "Head",
+        tipo: "Head1",
       },
-    ],
-  };
+      {
+        peca: "Bridge",
+        tipo: "Bridge1",
+      },
+      {
+        peca: "Fretboard",
+        tipo: "Fretboard1",
+      },
+    ];
+  }
 
   return (
     <>
       {" "}
-      <Flex direction="column" >
+      <Flex direction="column">
         <Flex>
           <Box
             my={6}
@@ -50,24 +68,13 @@ const PecasSelecionadas = (lista) => {
             borderWidth={1}
             borderRadius={8}
             boxShadow="lg"
+            width="full"
             padding={5}
           >
             <Heading marginBottom={5}> Peças escolhidas:</Heading>
             <Flex>
-              <Flex> {showData(data.lista)}</Flex>
+              <Flex> {showData(data)}</Flex>
             </Flex>
-          </Box>
-          <Box
-            my={6}
-            textAlign="center"
-            p={8}
-            borderWidth={1}
-            borderRadius={8}
-            boxShadow="lg"
-            padding={5}
-          >
-            <Heading> Descrição: </Heading>
-            <Text> {data.descricao}</Text>
           </Box>
         </Flex>
       </Flex>

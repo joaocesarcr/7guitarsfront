@@ -15,8 +15,18 @@ import {
   Input,
 } from '@chakra-ui/react';
 import MainNav from '../components/MainNav';
+import PecasSelecionadas from "../components/PecasSelecionadas.jsx";
 
-function MontarInstrumento() {
+
+function MontarInstrumento({data = {
+    titulo: "titulo",
+    tipo: "tipo",
+    preco: "$$",
+    autor: "autor",
+    data: "data",
+    descricao: "aaaaaa",
+  }
+}) {
   return (
     <ChakraProvider theme={theme}>
       <MainNav />
@@ -31,6 +41,7 @@ function MontarInstrumento() {
           <Box my={12} textAlign="center">
             <Heading color="black">Montar Instrumento</Heading>
           </Box>
+          <PecasSelecionadas data={data}/>
         </Box>
       </Flex>
     </ChakraProvider>

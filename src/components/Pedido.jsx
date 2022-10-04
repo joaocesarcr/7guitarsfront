@@ -1,4 +1,5 @@
 import {
+  Heading,
   Box,
   Flex,
   IconButton,
@@ -19,16 +20,20 @@ import { Logo } from "./Logo";
 import { Link } from "react-router-dom";
 import PecasSelecionadas from "./PecasSelecionadas.jsx";
 
-const Pedido = (data) => {
+const Pedido = (props) => {
   const { getDisclosureProps, getButtonProps } = useDisclosure();
 
-  data = {
+  /*
+  const data = {
     titulo: "titulo",
     tipo: "tipo",
     preco: "$$",
     autor: "autor",
     data: "data",
+    descricao: "aaaaaa",
   };
+  */
+  const data = {...props.data}
   const buttonProps = getButtonProps();
   const disclosureProps = getDisclosureProps();
   return (
@@ -56,6 +61,18 @@ const Pedido = (data) => {
             </Flex>
             <Flex direction="column" {...disclosureProps}>
               <PecasSelecionadas {...disclosureProps} />
+              <Box
+                my={6}
+                p={8}
+                borderWidth={1}
+                borderRadius={8}
+                boxShadow="lg"
+                padding={5}
+              >
+                <Heading> Descrição: </Heading>
+                <Text> {data.descricao}</Text>
+              </Box>
+
               <Button width="full" mt={4} type="submit">
                 Adicionar ao Carrinho
               </Button>
