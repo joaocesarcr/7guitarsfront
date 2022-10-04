@@ -146,7 +146,7 @@ function GerenciarEstoque() {
         align="center"
         justifyContent="center"
         h="100vh"
-        bgColor="orange"
+        bgColor="#E2E2E2"
       >
         <Flex
           width="full"
@@ -154,11 +154,11 @@ function GerenciarEstoque() {
           align="flex-start"
           justifyContent="center"
           h="100vh"
-          bgColor="blue"
+          bgColor="#E2E2E2"
         >
           <Box p={6}>
             <Box my={12} textAlign="center">
-              <Heading color="black">Gerenciar Estoque</Heading>
+              <Heading color="black">Inserir Novas Partes</Heading>
             </Box>
             <Box
               my={6}

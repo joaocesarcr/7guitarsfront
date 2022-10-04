@@ -20,6 +20,12 @@ import {
   FormControl,
   FormLabel,
   Input,
+  Text,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
 } from '@chakra-ui/react';
 import MainNav from '../components/MainNav';
 // axios.defaults.withCredentials = true;
@@ -28,16 +34,17 @@ function CadastroEstoque(secoes) {
   const secoesArray = secoes;
   // console.log(secoesArray);
   // const [secoesArray, setSecoesArray] = useState([]);
-  const [partArray, setPartArray] = useState([]);
+  const [partArray, setPartArray] = useState();
+  const [partCordas, setPartCordas] = useState([]);
   const [quantity, setQuantity] = useState(0);
-  const [part, setPart] = useState({
+  const partes = {
     Cordas: [],
     Corpos: [],
     Controles: [],
     Pescocos: [],
     Cabecas: [],
     Captadores: [],
-  });
+  };
 
   // useEffect(() => {
   //   // let partsSections = [];
@@ -66,91 +73,265 @@ function CadastroEstoque(secoes) {
   //   // setPartArray(partsSections);
   // }, [secoesArray]);
 
+  // let teste = fetchData('Cordas');
+  // teste.then((result) => {
+  //   console.log(result.Variacoes);
+  // });
+
+  // function mapPartInfos(section, array) {
+  //   return partCordas['Variacoes'].map((key, index) => (
+  //     <TabPanel>
+  //       <Text>{key.text}</Text>
+  //       <FormLabel>Preço</FormLabel>
+  //       <Input
+  //         type="text"
+  //         name="price"
+  //         value={key.price}
+  //         // onChange={(e) => setValue(e.target.value)}
+  //         // onKeyPress={handleKeyPress}
+  //         autoComplete="off"
+  //       />
+  //       <FormLabel>Quantidade</FormLabel>
+  //       <Input
+  //         type="text"
+  //         name="quantity"
+  //         value={key.quantity}
+  //         // onChange={(e) => setValue(e.target.value)}
+  //         // onKeyPress={handleKeyPress}
+  //         autoComplete="off"
+  //       />
+  //       <Text>{key.description}</Text>
+  //     </TabPanel>
+  //   ));
+  // }
+
+  // console.log(partCabecas);
+  // useEffect(() => {
+  //   const fetchData = async (secao) => {
+  //     const response = await axios(
+  //       'http://sevenguitars.herokuapp.com/getPartsOfType?section=' + secao
+  //     );
+  //     const data = response.data;
+  //     return data;
+  //   };
+
+  //   return () => {
+  //     secoesArray.forEach((secao) => {
+  //       let teste = fetchData(secao.name);
+  //       teste.then((result) => {
+  //         // setPartArray(result['Variacoes']);
+  //         partes[secao.name] = result['Variacoes'];
+  //       });
+  //     });
+  //     setPartCabecas(partes['Cabecas']);
+  //     console.log(partCabecas);
+  //   };
+  // }, [partes, secoesArray, partCabecas]);
+
   useEffect(() => {
-    const fetchData = async (secao) => {
+    const fetchData = async () => {
       const response = await axios(
+
         'http://sevenguitars.herokuapp.com/getPartsOfType?section=' + secao
       );
       const data = response.data;
-      // setPostArray(data.Variacoes);
+      setPartCordas(data.Variacoes);
     };
     fetchData();
-  }, [secoesArray]);
+  }, []);
+
 
   const getVariations = async (secao) => {
     const response = await axios(
       'http://sevenguitars.herokuapp.com/getPartsOfType?section=' + secao
     );
-    const data = response.data;
-    return data;
-  };
+  }
+
+  if (partCordas) {
+    console.log(partCordas);
+  }
+
+  // useEffect(() => {
+  //   axios
+  //     .get('http://sevenguitars.herokuapp.com/getPartsOfType?section=Cordas')
+  //     .then((resp) => {
+  //       setPartCordas(resp.data);
+  //       // console.log(partCordas['Variacoes']);
+  //     });
+
+  //   function mapPartInfos(partCordas) {
+  //     return partCordas['Variacoes'].map((key, index) => (
+  //       <TabPanel>
+  //         <Text>{key.text}</Text>
+  //         <FormLabel>Preço</FormLabel>
+  //         <Input
+  //           type="text"
+  //           name="price"
+  //           value={key.price}
+  //           // onChange={(e) => setValue(e.target.value)}
+  //           // onKeyPress={handleKeyPress}
+  //           autoComplete="off"
+  //         />
+  //         <FormLabel>Quantidade</FormLabel>
+  //         <Input
+  //           type="text"
+  //           name="quantity"
+  //           value={key.quantity}
+  //           // onChange={(e) => setValue(e.target.value)}
+  //           // onKeyPress={handleKeyPress}
+  //           autoComplete="off"
+  //         />
+  //         <Text>{key.description}</Text>
+  //       </TabPanel>
+  //     ));
+  //   }
+
+  //   // console.log(partCordas['Nome']);
+  //   // partCordas['Variacoes']
+  // }, [partCordas]);
+
+  // console.log(partes);
+  // console.log(partArray);
+
+  // console.log(teste);
+
+  // useEffect(() => {
+  //   const fetchData = async (secao) => {
+  //     const response = await axios(
+  //       'http://sevenguitars.herokuapp.com/getPartsOfType?section=' + secao
+  //     );
+  //     const data = response.data;
+  //     setPartArray(data);
+  //     // secao.forEach((sec) => {
+  //     //   if (sec.name === 'Cordas') {
+  //     //     console.log(data);
+  //     //   }
+  //     //   // setSecoesArray(data);
+  //     // });
+  //     // setPostArray(data.Variacoes);
+  //   };
+  //   fetchData();
+  // }, [secoesArray]);
+  // console.log(partArray);
+
+  // useEffect(() => {
+  //   const fetchData = async (secao) => {
+  //     const response = await axios(
+  //       'http://sevenguitars.herokuapp.com/getPartsOfType?section=' + secao
+  //     );
+  //     const data = response.data;
+  //     // setPostArray(data.Variacoes);
+  //   };
+  //   fetchData();
+  // }, [secoesArray]);
+
+  // const getVariations = async (secao) => {
+  //   const response = await axios(
+  //     'http://sevenguitars.herokuapp.com/getPartsOfType?section=' + secao
+  //   );
+  //   const data = response.data;
+  //   return data;
+  // };
+
   // console.log(secoesArray);
-  secoesArray.forEach((secao) => {
-    getVariations(secao.name).then((name) => console.log(name));
-  });
+  // function mapData() {
+  //   secoesArray.forEach((secao) => {
+  //     getVariations(secao.name).then((name) => <Text>{'sucesso'}</Text>);
+  //   });
+  // }
+  // function mapData() {
+  //   secoesArray.forEach((secao) => {
+  //     getVariations(secao.name).then((name) => <Text>{'sucesso'}</Text>);
+  //   });
+  // }
+
+  // const teste = (name) => {
+  //   testeArray = name;
+  //   // console.log(testeArray.Nome.section);
+  //   return testeArray;
+  // };
+
+  // const mapPartes = (array) => {
+  //   secoesArray.map((parte, index) => {
+  //     if (array.Nome.section === parte.name) {
+  //       return <Text>{'sucesso'}</Text>;
+  //     } else {
+  //       return <Text>{'fracasso'}</Text>;
+  //     }
+
+  //     // <option value={parte.name} key={index}>
+  //       // {parte.name}
+  //     // </option>
+  //   });
+  // };
+
+  // const mapPartes = (partArray) => {
+  //   return secoesArray.map((parte, index) => <Text>{'teste'}</Text>);
+  // };
 
   return (
-    <ChakraProvider theme={theme}>
-      <Flex
-        width="full"
-        height="full"
-        align="center"
-        // justifyContent="center"
-        h="100vh"
-        bgColor="purple"
-        direction="column"
+    <Flex
+      width="full"
+      height="full"
+      align="center"
+      // justifyContent="center"
+      h="100vh"
+      bgColor="#E2E2E2"
+      direction="column"
+    >
+      <Box my={12} textAlign="center">
+        <Heading color="black">Gerenciar Estoque</Heading>
+      </Box>
+      <Box
+        my={6}
+        textAlign="left"
+        p={8}
+        maxWidth="600px"
+        borderWidth={1}
+        borderRadius={8}
+        boxShadow="lg"
+        bgColor="white"
       >
-        <Box my={12} textAlign="center">
-          <Heading color="black">Gerenciar Estoque</Heading>
-        </Box>
-        <Box
-          my={6}
-          textAlign="left"
-          p={8}
-          maxWidth="600px"
-          borderWidth={1}
-          borderRadius={8}
-          boxShadow="lg"
-          bgColor="white"
-        >
-          <Accordion defaultIndex={[0]} allowToggle minWidth="300px">
-            <AccordionItem>
-              <h2>
-                <AccordionButton>
-                  <Box flex="1" textAlign="left">
-                    Section 1 title
-                  </Box>
-                  <AccordionIcon />
-                </AccordionButton>
-              </h2>
-              <AccordionPanel pb={4}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.
-              </AccordionPanel>
-            </AccordionItem>
-
-            <AccordionItem>
-              <h2>
-                <AccordionButton>
-                  <Box flex="1" textAlign="left">
-                    Section 2 title
-                  </Box>
-                  <AccordionIcon />
-                </AccordionButton>
-              </h2>
-              <AccordionPanel pb={4}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.
-              </AccordionPanel>
-            </AccordionItem>
-          </Accordion>
-        </Box>
-      </Flex>
-    </ChakraProvider>
+        <Tabs size="md" variant="enclosed">
+          <TabList>
+            <Tab>Cabeças</Tab>
+            <Tab>Captadores</Tab>
+            <Tab>Controles</Tab>
+            <Tab>Cordas</Tab>
+            <Tab>Corpos</Tab>
+            <Tab>Pescoços</Tab>
+          </TabList>
+          <TabPanels>
+            {/* {mapPartInfos(partCordas)} */}
+            {/* <TabPanel>
+              <Text>Nome</Text>
+              <FormLabel>Preço</FormLabel>
+              <Input
+                type="text"
+                name="text"
+                value="R$0.00"
+                // onChange={(e) => setValue(e.target.value)}
+                // onKeyPress={handleKeyPress}
+                autoComplete="off"
+              />
+              <FormLabel>Quantidade</FormLabel>
+              <Input
+                type="text"
+                name="text"
+                value={0}
+                // onChange={(e) => setValue(e.target.value)}
+                // onKeyPress={handleKeyPress}
+                autoComplete="off"
+              />
+              <Text>Descrição</Text>
+            </TabPanel> */}
+            <TabPanel>
+              <Text>Nome</Text>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
+      </Box>
+    </Flex>
   );
 }
 
