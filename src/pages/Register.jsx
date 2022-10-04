@@ -34,9 +34,9 @@ function Register() {
     //   headers: {
     //     'Content-Type': 'application/json',
     //   },
-    const response = await fetch('https://sevenguitars.herokuapp.com/register', {
+    const response = await fetch('http://sevenguitars.herokuapp.com/register', {
       method: 'POST',
-      credentials: 'include',
+      // credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
