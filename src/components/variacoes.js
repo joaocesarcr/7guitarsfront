@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/App.css';
-
+axios.defaults.withCredentials = true;
 function Variacoes(obj) {
   const [quantity, setQuantity] = useState(0);
   const postArray = obj.postList;
