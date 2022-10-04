@@ -20,7 +20,7 @@ const navBarPerUser = {
   adm: ["Gerenciar Estoque", "Analise de Pedidos"],
 };
 
-const MainNav = ({ userType='adm'}) => {
+const MainNav = ({ userType='user'}) => {
   
 
   const { isOpen, onToggle } = useDisclosure();

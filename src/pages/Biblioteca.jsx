@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState } from "react";
 import {
   ChakraProvider,
   Flex,
@@ -13,28 +13,29 @@ import {
   FormControl,
   FormLabel,
   Input,
-} from '@chakra-ui/react';
-import MainNav from '../components/MainNav';
+} from "@chakra-ui/react";
+import MainNav from "../components/MainNav";
+import Pedido from "../components/Pedido";
 
 function Biblioteca() {
   return (
     <ChakraProvider theme={theme}>
       <MainNav />
-      <Flex
+      <Box
         width="full"
         height="full"
-        align="flex-start"
+        align="center"
         justifyContent="center"
         h="100vh"
       >
-        <Box p={6}>
-          <Box my={12} textAlign="center">
-            <Heading color="black">Biblioteca</Heading>
-          </Box>
+        <Box width="50%">
+          <Pedido />
+          <Pedido />
+          <Pedido />
+          <Pedido />
         </Box>
-      </Flex>
+      </Box>
     </ChakraProvider>
   );
 }
-
 export default Biblioteca;
