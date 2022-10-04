@@ -1,6 +1,6 @@
-import { React, useState, useEffect } from "react";
-import CadastroEstoque from "./cadastroEstoque"
-import axios from "axios";
+import { React, useState, useEffect } from 'react';
+import CadastroEstoque from './cadastroEstoque';
+import axios from 'axios';
 import {
   ChakraProvider,
   Select,
@@ -16,9 +16,8 @@ import {
   FormControl,
   FormLabel,
   Input,
-} from "@chakra-ui/react";
-import MainNav from "../components/MainNav";
-import { ArrowForwardIcon } from "@chakra-ui/icons";
+} from '@chakra-ui/react';
+import MainNav from '../components/MainNav';
 
 function GerenciarEstoque() {
   let [parteNome, setParteNome] = useState(''); // TODO: change later
@@ -28,7 +27,7 @@ function GerenciarEstoque() {
   let [description, setDescription] = useState('');
   let [quantity, setQuantity] = useState(0);
   let [sorted, setSorted] = useState(false);
-  let [partesArray, setPartesArray] = useState([]);
+  let [secoesArray, setSecoesArray] = useState([]);
   let [postArray, setPostArray] = useState([]);
 
   // useEffect(() => {
@@ -44,11 +43,9 @@ function GerenciarEstoque() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios(
-        "https://sevenguitars.herokuapp.com/getAllSections"
-      );
+      const response = await axios('https://sevenguitars.herokuapp.com/getAllSections');
       const data = response.data;
-      setPartesArray(data);
+      setSecoesArray(data);
     };
     fetchData();
   }, []);
@@ -73,6 +70,7 @@ function GerenciarEstoque() {
   // }
 
   async function addPart(event) {
+    event.preventDefault();
     if (value) {
       const post = {
         id: id,
@@ -81,13 +79,12 @@ function GerenciarEstoque() {
         description: description,
         quantity: quantity,
       };
-      // console.log(post);
 
-      postArray.unshift(post);
+      // postArray.unshift(post);
 
-      setValue("");
-      setPrice("");
-      setDescription("");
+      setValue('');
+      setPrice('');
+      setDescription('');
       setId(id + 1);
       // TODO fix this conversion
       const obj = {
@@ -97,35 +94,34 @@ function GerenciarEstoque() {
         price: post.price,
         description: post.description,
       };
-      const response = await fetch(
-        "https://sevenguitars.herokuapp.com/registerPart",
-        {
-          method: "POST",
-          // credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(obj),
-        }
-      );
+      const response = await fetch('https://sevenguitars.herokuapp.com/registerPart', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(obj),
+      });
       const data = await response.json();
       console.log(data);
     }
   }
 
   function handleKeyPress(e) {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       addPart();
     }
   }
 
   const mapPecas = () => {
-    return partesArray.map((parte, index) => (
-      <option value={parte.name} key={index}>{parte.name}</option>
+    return secoesArray.map((parte, index) => (
+      <option value={parte.name} key={index}>
+        {parte.name}
+      </option>
     ));
-  }
+  };
 
-  // function mapByUserType(userType) {  
+  // function mapByUserType(userType) {
   //   return navBarPerUser[userType].map((x) => (
   //     <Link to={ "/" + x.toLowerCase().replace(/\s+/g, '')}>
   //       <Button
@@ -139,7 +135,6 @@ function GerenciarEstoque() {
   //     </Link>
   //   ));
   // }
-  
 
   return (
     <ChakraProvider theme={theme}>
@@ -176,7 +171,10 @@ function GerenciarEstoque() {
             >
               <form onSubmit={addPart}>
                 <FormControl isRequired>
-                  <Select placeholder="Selecione a peça" onChange={(e) => setParteNome(e.target.value)}>
+                  <Select
+                    placeholder="Selecione a peça"
+                    onChange={(e) => setParteNome(e.target.value)}
+                  >
                     {mapPecas()}
                   </Select>
 
@@ -216,9 +214,6 @@ function GerenciarEstoque() {
                 <Button width="full" mt={4} type="submit">
                   Inserir
                 </Button>
-                {/* <Button width="full" mt={4} type="test" onClick={console.log(parteNome)}>
-                  Teste
-                </Button> */}
               </form>
             </Box>
           </Box>
@@ -233,9 +228,7 @@ function GerenciarEstoque() {
           bgColor="red"
           direction="column"
         >
-
-          <Heading> bbb </Heading>
-          {CadastroEstoque()}
+          {CadastroEstoque(secoesArray)}
         </Flex>
       </Flex>
     </ChakraProvider>
