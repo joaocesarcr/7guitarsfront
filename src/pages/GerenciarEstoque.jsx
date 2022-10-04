@@ -43,6 +43,7 @@ function GerenciarEstoque() {
 
   useEffect(() => {
     const fetchData = async () => {
+      axios.defaults.withCredentials = true;
       const response = await axios('https://sevenguitars.herokuapp.com/getAllSections');
       const data = response.data;
       setSecoesArray(data);
@@ -96,7 +97,7 @@ function GerenciarEstoque() {
       };
       const response = await fetch('https://sevenguitars.herokuapp.com/registerPart', {
         method: 'POST',
-        credentials: 'include',
+        // credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
