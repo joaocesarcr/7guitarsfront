@@ -13,6 +13,7 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { Logo } from './Logo';
 import { Link } from 'react-router-dom';
 
+
 const navBarPerUser = {
   user: ['Montar Instrumento', 'Biblioteca', 'Carrinho', 'Meus Pedidos'],
   loggedOut: ['Login', 'Register'],
@@ -23,6 +24,7 @@ export default function MainNav(userType) {
   const { isOpen, onToggle } = useDisclosure();
   userType = 'loggedOut';
 
+  const { isOpen, onToggle } = useDisclosure();
   return (
     <Box>
       <Flex
@@ -34,8 +36,13 @@ export default function MainNav(userType) {
         px={{ base: 4 }}
         align={'center'}
       >
+<<<<<<< HEAD
         <Flex
           flex={{ base: 1, md: 'auto' }}
+=======
+        {/* <Flex
+          flex={{ base: 1, md: "auto" }}
+>>>>>>> 9d38956bd588cba4fe3d3bd10ee771fb3c593690
           ml={{ base: -2 }}
           display={{ base: 'flex', md: 'none' }}
         >
@@ -45,10 +52,21 @@ export default function MainNav(userType) {
             variant={'ghost'}
             aria-label={'Toggle Navigation'}
           />
+<<<<<<< HEAD
         </Flex>
         <Stack justify={'space-between'} direction={'row'} align={'center'} w={'100%'}>
           <Logo h="10vmin" pointerEvents="none" justify={'flex-start'} />
 
+=======
+        </Flex> */}
+        <Stack
+          justify={"space-between"}
+          direction={"row"}
+          align={"center"}
+          w={"100%"}
+        >
+          <Logo h="10vmin" pointerEvents="none" justify={"flex-start"} />
+>>>>>>> 9d38956bd588cba4fe3d3bd10ee771fb3c593690
           {CreateNavText(userType)}
         </Stack>
       </Flex>
@@ -56,14 +74,28 @@ export default function MainNav(userType) {
   );
 }
 
+<<<<<<< HEAD
 function CreateNavText(userT) {
   return (
     <HStack spacing={'5rem'} pr={'5rem'} color={useColorModeValue('gray.600', 'white')}>
       {mapByUserType(userT)}
+=======
+
+function CreateNavText(userType) {
+  // TODO MUDAR AQUI 
+  return (
+    <HStack
+      spacing={"5rem"}
+      pr={"5rem"}
+      color={useColorModeValue("gray.600", "white")}
+    >
+      {mapByUserType(userType)}
+>>>>>>> 9d38956bd588cba4fe3d3bd10ee771fb3c593690
     </HStack>
   );
 }
 
+<<<<<<< HEAD
 function mapByUserType(userT) {
   return navBarPerUser[userT].map((x) => (
     <Link to={'/' + x.toLowerCase().replace(/\s+/g, '')}>
@@ -71,6 +103,14 @@ function mapByUserType(userT) {
         // as={'a'}
         fontSize={'md'}
         color={'white'}
+=======
+function mapByUserType(userType) {  
+  return navBarPerUser[userType].map((x, index) => (
+    <Link key={index} to={ "/" + x.toLowerCase().replace(/\s+/g, '')}>
+      <Button
+        fontSize={"md"}
+        color={"white"}
+>>>>>>> 9d38956bd588cba4fe3d3bd10ee771fb3c593690
         fontWeight={400}
         variant={'link'}
       >
@@ -80,23 +120,8 @@ function mapByUserType(userT) {
   ));
 }
 
-{
-  /* 
+export default MainNav;
 
-          <Button
-            display={{ base: 'none', md: 'inline-flex' }}
-            fontSize={'sm'}
-            fontWeight={600}
-            color={'white'}
-            bg={'#BD1A6D'}
-            href={'#'}
-            _hover={{
-              bg: 'pink.300',
-            }}
-          >
-            Oferecer Serviço
-          </Button> */
-}
-{
-  /* <ColorModeSwitcher justifySelf="flex-end" /> */
-}
+// {
+//   <ColorModeSwitcher justifySelf="flex-end" />
+// }
