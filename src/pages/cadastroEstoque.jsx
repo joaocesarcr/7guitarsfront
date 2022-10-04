@@ -22,7 +22,7 @@ import {
   Input,
 } from '@chakra-ui/react';
 import MainNav from '../components/MainNav';
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 function CadastroEstoque(secoes) {
   const secoesArray = secoes;

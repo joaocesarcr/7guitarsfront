@@ -32,7 +32,7 @@ function Login() {
     // });
     const response = await fetch('http://sevenguitars.herokuapp.com/login', {
       method: 'POST',
-      credentials: 'include',
+      // credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },

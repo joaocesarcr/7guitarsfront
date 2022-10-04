@@ -18,7 +18,7 @@ import {
   Input,
 } from '@chakra-ui/react';
 import MainNav from '../components/MainNav';
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 function GerenciarEstoque() {
   let [parteNome, setParteNome] = useState(''); // TODO: change later
@@ -97,7 +97,7 @@ function GerenciarEstoque() {
       };
       const response = await fetch('http://sevenguitars.herokuapp.com/registerPart', {
         method: 'POST',
-        credentials: 'include',
+        // credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
