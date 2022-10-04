@@ -228,7 +228,13 @@ function GerenciarEstoque() {
           bgColor="red"
           direction="column"
         >
+<<<<<<< HEAD
           {CadastroEstoque(secoesArray)}
+=======
+
+          <Heading> bbb </Heading>
+          {CadastroEstoque()}
+>>>>>>> 84a040f20610822e06f586a1393dd0757e0f9192
         </Flex>
       </Flex>
     </ChakraProvider>
