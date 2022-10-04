@@ -19,12 +19,12 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [endereco, setEndereco] = useState('');
+  const [address, setEndereco] = useState('');
   const [admin] = useState(false);
   const [error, setError] = useState({
     password: '',
-    confirmPassword: ''
-  })
+    confirmPassword: '',
+  });
 
   async function registerUser(event) {
     event.preventDefault();
@@ -34,7 +34,7 @@ function Register() {
     //   headers: {
     //     'Content-Type': 'application/json',
     //   },
-    const response = await fetch('https://sevenguitars.herokuapp.com/register', {
+    const response = await fetch('http://sevenguitars.herokuapp.com/register', {
       method: 'POST',
       // credentials: 'include',
       headers: {
@@ -42,6 +42,7 @@ function Register() {
       },
       body: JSON.stringify({
         name,
+        address,
         cpf,
         email,
         password,
@@ -58,40 +59,40 @@ function Register() {
     }
   }
 
-  const onInputChange = e => {
+  const onInputChange = (e) => {
     const { name, value } = e.target;
     if (name === 'password') {
-      setPassword(value)
+      setPassword(value);
     } else if (name === 'confirmPassword') {
-      setConfirmPassword(value)
-    }    
+      setConfirmPassword(value);
+    }
     validateInput(e);
-  }
+  };
 
-  const validateInput = e => {
+  const validateInput = (e) => {
     let { name, value } = e.target;
-    setError(prev => {
-      const stateObj = { ...prev, [name]: "" };
- 
-      switch (name) { 
-        case "password":
+    setError((prev) => {
+      const stateObj = { ...prev, [name]: '' };
+
+      switch (name) {
+        case 'password':
           if (confirmPassword && value !== confirmPassword) {
-            stateObj["confirmPassword"] = "As senhas não são iguais";
+            stateObj['confirmPassword'] = 'As senhas não são iguais';
           } else {
-            stateObj["confirmPassword"] = confirmPassword ? "" : error.confirmPassword;
+            stateObj['confirmPassword'] = confirmPassword ? '' : error.confirmPassword;
           }
           break;
- 
-        case "confirmPassword":
+
+        case 'confirmPassword':
           if (password && value !== password) {
-            stateObj[name] = "As senhas não são iguais";
+            stateObj[name] = 'As senhas não são iguais';
           }
           break;
- 
+
         default:
           break;
       }
- 
+
       return stateObj;
     });
   };
@@ -154,7 +155,7 @@ function Register() {
                     onChange={onInputChange}
                     onBlur={validateInput}
                   />
-                  {error.password && <span className='err'>{error.password}</span>}
+                  {error.password && <span className="err">{error.password}</span>}
                 </FormControl>
                 <FormControl isRequired>
                   <FormLabel>Confirme Senha</FormLabel>
@@ -166,7 +167,9 @@ function Register() {
                     onChange={onInputChange}
                     onBlur={validateInput}
                   />
-                  {error.confirmPassword && <span className='err'>{error.confirmPassword}</span>}
+                  {error.confirmPassword && (
+                    <span className="err">{error.confirmPassword}</span>
+                  )}
                 </FormControl>
               </HStack>
               <HStack spacing={6} mt={6}>
@@ -184,9 +187,9 @@ function Register() {
                   <FormLabel>Endereço</FormLabel>
                   <Input
                     type="text"
-                    name="endereco"
+                    name="address"
                     placeholder="Seu endereço"
-                    value={endereco}
+                    value={address}
                     onChange={(e) => setEndereco(e.target.value)}
                   />
                 </FormControl>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/App.css';
-
+axios.defaults.withCredentials = true;
 function Variacoes(obj) {
   const [quantity, setQuantity] = useState(0);
   const postArray = obj.postList;
@@ -36,7 +36,7 @@ function Variacoes(obj) {
     //   },
     //   body: JSON.stringify(obj),
     // });
-    const response = await fetch('https://sevenguitars.herokuapp.com/deletePart', {
+    const response = await fetch('http://sevenguitars.herokuapp.com/deletePart', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
