@@ -131,8 +131,7 @@ function CadastroEstoque(secoes) {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios(
-
-        'http://sevenguitars.herokuapp.com/getPartsOfType?section=' + secao
+        'http://sevenguitars.herokuapp.com/getPartsOfType?section=Cordas'
       );
       const data = response.data;
       setPartCordas(data.Variacoes);
@@ -140,12 +139,11 @@ function CadastroEstoque(secoes) {
     fetchData();
   }, []);
 
-
   const getVariations = async (secao) => {
     const response = await axios(
       'http://sevenguitars.herokuapp.com/getPartsOfType?section=' + secao
     );
-  }
+  };
 
   if (partCordas) {
     console.log(partCordas);
