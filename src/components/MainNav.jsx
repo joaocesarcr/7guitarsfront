@@ -65,7 +65,6 @@ const MainNav = ({ userType='adm'}) => {
 
 
 function CreateNavText(userType) {
-  // TODO MUDAR AQUI 
   return (
     <HStack
       spacing={"5rem"}
