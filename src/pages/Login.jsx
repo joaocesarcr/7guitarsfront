@@ -32,7 +32,7 @@ function Login() {
     // });
     const response = await fetch('https://sevenguitars.herokuapp.com/login', {
       method: 'POST',
-      // credentials: 'include',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -53,7 +53,7 @@ function Login() {
   }
   return (
     <ChakraProvider theme={theme}>
-      <MainNav userType={type}/>
+      <MainNav userType={type} />
       <Flex
         // className="loginContainer"
         width="full"
